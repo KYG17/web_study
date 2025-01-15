@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목록 스타일</title>
+</head>
+<body>
+    <style>
+        .ulstyle{list-style-type: circle;}
+    </style>
+    <!-- disc,circle,square,none -->
+    <h1>순서가 없는 목록</h1>
+    <ul class="ulstyle">
+        <li>황정현</li>
+        <li>강성관</li>
+        <li>곽도영</li>
+        <li>권용규</li>
+    </ul>
+    <h2>순서가 있는 목록</h2>
+    <!-- ol : decimal[-leading-zer] 
+    lower-roman , upper-roman,lower-alpha,upeer-alpha-->
+    <ol style="list-style-type:decimal-leading-zero;">
+        <li>황정현</li>
+        <li>강성관</li>
+        <li>곽도영</li>
+        <li>권용규</li>
+    </ol> 
+
+    <br><br><br>
+    <style>
+        .img{list-style-image: url('../resources/sponge_list.png');}
+
+    </style>
+    <ul class="img">
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>ES6</li>
+    </ul>
+    
+    <h1>목록 들여쓰기</h1>
+    <style>
+        .inside{
+            /* list-style-position: outside; */
+            list-style: square inside url(../resources/sponge_list.png)
+        }
+        
+    </style>
+    <ul class="inside">
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>ES6</li>
+    </ul>
+    
+</body>
+</html>
