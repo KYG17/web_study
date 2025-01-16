@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>id 기준 접근</h2>
+    <div id="idTarget">
+        변경전
+    </div>
+    <button type="button" onclick="turnRed();">빨강이야~
+    </button>
+    <script>
+        function turnRed(){
+            var it = document.getElementById('idTarget');
+            it.style.color = 'red';
+        } 
+    </script>
+
+    <h2>class 기준 접근</h2>
+    <p class="a">p1</p>
+    <span class="b a" >span1</span>
+    <p class="b">p2</p>
+    <input type="button" value="a만!" onclick="changeOnlyA();">
+    <script>
+        function changeOnlyA(){
+            var el = document.getElementsByClassName('a');
+            console.log(el);
+            //1.인덱스
+            // el[0].style.color='hotpink';
+            //2.반복문
+            for(var i = 0 ; i<el.length ; i++){
+                // el[i].style.color='green';
+                if(i==0){
+                    el[i].style.color='red';
+                }else{
+                    el[i].style.color='green';
+                }
+            }
+        }
+    </script>
+    <h2>태그명 기준 접근</h2>
+    <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>ES6</li>
+    </ul>
+    <button type="button" onclick="changeJSBlue();">JS 좋아!</button>
+    <script>
+        function changeJSBlue(){
+            var tagEl = document.getElementsByTagName('li');
+            console.log(tagEl);
+            tagEl[2].style.color='blue';
+        }
+    </script>
+
+    <h2>name속성 기준 접근</h2>
+    <label>
+        <input type="checkbox" name="food" value="1">
+        짜장면
+    </label>
+    <label>
+        <input type="checkbox" name="food"  value="2">
+        짬뽕 
+    </label>
+    <label>
+        <input type="checkbox" name="food" value="3">
+        군만두 
+    </label> <br>
+
+    <button type="button" onclick="addReview();"> 리뷰이벤트 참여 </button>
+    <script>
+        function addReview(){
+            var nameEl = document.getElementsByName('food');
+            console.log(nameEl);
+            // nameEl[2].checked = true;
+
+            var checkStatus = nameEl[2].checked;
+            console.log(checkStatus);
+            if(checkStatus){
+                //체크되어 있다면
+                nameEl[2].checked = false;
+            }else{
+                //체크되어 있지 않다면
+                nameEl[2].checked = true;
+            }
+        }
+    </script>
+
+    <h2>선택자 기준 접근</h2>
+    <button type="button" onclick="practiceQuery();">
+        접근하기
+    </button>
+    <script>
+        function practiceQuery(){
+            var one = document.querySelector('#idTarget');  
+            one.style.color='orange';
+            var many = document.querySelectorAll('.b');
+            many[0].style.color='red';
+        }
+    </script>
+    <h2>value 속성 사용하기</h2>
+    <input type="text" id="userName">
+    <input type="button" value="가져오기" id="getNameBtn">
+    <input type="button" value="바꿔주기" id="setNameBtn">
+    <script>
+        document.getElementById('getNameBtn').onclick = function(){
+            var userName = document.getElementById('userName').value;
+            alert(userName);
+        }
+        document.getElementById('setNameBtn').onclick = function(){
+            document.getElementById('userName').value += '황정현';
+        }
+    </script>
+
+    <h2>style 속성 활용하기</h2>
+    <style>
+        /* #styleBtn{
+            background-color: cornflowerblue;
+        } */
+    </style>
+    <input type="button" value="!스타일 변신!" id="styleBtn" onclick="changeStyle();"
+                style="background-color: cornflowerblue;">
+    <script>
+        function changeStyle(){
+            //console.log('함수 연결 확인');
+            //inline 방식식
+            var st1 = document.getElementById('styleBtn').style.backgroundColor;
+            console.log(st1);
+
+            //권장하는 방법 X
+            var ele2 = document.getElementById('styleBtn');
+            var st2 = getComputedStyle(ele2).backgroundColor;
+            console.log(st2);
+
+            ele2.style.backgroundColor = 'gold';
+        }
+    </script> <br>
+
+
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;     
+        }
+    </style> 
+    <input type="color" value="색변경" id="colorChange">
+    <input type="button" value="변경" id="Btn1" onclick="changeC()">
+    <div id="box" style="background-color: blue;">
+    </div>
+    <script>
+        function changeC(){
+            var a = document.getElementById('colorChange').value;
+            var a1 = document.getElementById('box').style.backgroundColor = a ;
+        }
+    </script>
+
+
+
+    <style>
+        #box1{
+            width:100px;
+            height:100px;
+        }
+    </style>
+
+    <input type="button" value="50x50" id="aaa" onclick="changeSize();">
+    <input type="button" value="100x100" id="aaaa" onclick="changeSize1();">
+    <input type="button" value="200x200" id="aaaaa" onclick="changeSize2();">
+    <div id="box1" style="background-color:black">
+    </div>
+    <script>
+        function changeSize(){
+            document.getElementById('box1').style.width='50px';
+            document.getElementById('box1').style.height='50px';
+        }
+        function changeSize1(){
+            document.getElementById('box1').style.width='100px';
+            document.getElementById('box1').style.height='100px';
+        }
+        function changeSize2(){
+            document.getElementById('box1').style.width='200px';
+            document.getElementById('box1').style.height='200px';
+        }
+
+    </script>
+
+    <br><br><br><br>
+    <h2>innerHTML</h2>
+    <div id="test1">
+        <p>Hello!</p>
+    </div>
+    <div id="test2">안녕하세요</div>
+    <input type="button" value="가져오기" onclick="getTag();">
+    <input type="button" value="바꿔주기" onclick="setTag();">
+    <script>
+        function setTag(){
+            document.getElementById('test1').innerHTML='<h1>정현아 너 고수냐?</h1>';
+        }
+
+
+
+
+        function getTag(){
+            var test1 = document.getElementById('test1').innerHTML
+            var test2 = document.getElementById('test2').innerHTML
+            console.log(test1);
+            console.log(test2);
+        }
+    </script>
+
+    
+
+</body>
+</html>

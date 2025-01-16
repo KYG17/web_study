@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>인라인(inline)</h1>
+    <button type="button" 
+                onclick="alert('안녕하세요!!!');">
+        내장 함수
+    </button>
+    
+    <button type ="button" onclick = "userFunc();">
+        사용자 정의 함수
+    </button>
+    <script>
+        // 자바스크립트의 함수 선언
+        function userFunc(){
+            console.log('반가워요!');
+        }
+    </script>
+
+    <h2>인터널 internal</h2>
+    <button type="button" id="inBtn">
+        인터널 버튼
+    </button>
+    <script>
+        document.getElementById('inBtn').onclick = function(){
+            alert('자바스크립트를 배우는 중입니다');
+        }
+    </script>
+
+    <h2>익스터널 external</h2>
+    <button type="button" id="exBtn">external 버튼</button>
+    <script src="../resources/sample.js"> </script>
+
+    <h2>데이터 입출력</h2>
+    <h3>console.log</h3>
+    <button type="button" onclick="printConsole();"> 콘솔 테스트
+    </button>
+    <script>
+        function printConsole(){
+            console.log('Hello World!');
+        }
+    </script>
+
+    <h1>이름 출력하기</h1>
+    <button type="button" onclick = "myname();">나의 이름은?    
+    </button>
+    <script>
+        function myname(){
+            console.log('권용규입니다!');
+        }
+    </script>
+
+    <h3>얼럿(알림)</h3>
+    <button type="button" onclick="printAlert();">
+        얼럿  테스트
+    </button>
+    <script>
+        function printAlert(){
+            alert('Hello World!!!!');
+        }
+    </script>
+
+    <button type="button" onclick="date();">오늘 날짜</button>
+    <script>
+        function date(){
+            alert('2025년 01월 16일 화요일');
+        }
+    </script>
+
+    <h2>프롬프트</h2>
+    <input type="button" value="이름 입력" onclick="insertName();">
+    <script>
+        function insertName(){
+            var name 
+            = prompt('이름을 입력하세요','황정현');
+            console.log(name);
+        }
+    </script>
+
+    <h1>프롬프트 연습</h1>
+    <button type="button" onclick="des();">위치</button>
+    <script>
+        function des(){
+            var name
+            = prompt('어디에 있으세요?');
+            console.log(name);
+        }
+    </script>
+
+    <h2>컨펌</h2>
+    <input type="button" value="확인받기" onclick="printYesOrNo();">
+    <script>
+        function printYesOrNo(){
+            // var falg 
+            // =confirm('당신은 로봇입니까?');
+            // console.log(falg);
+            // if(falg==true){
+            //     console.log('hi robot');
+            // }else{
+            //     console.log('사람이군요?');
+            // }
+            if(confirm('당신은 로봇입니까?')){
+                console.log('로봇일때!!');
+            }
+        }
+    </script>
+
+    <h2>그리운 일요일</h2>
+    <button type="button" onclick="miss();">일요일</button>
+    <script>
+        function miss(){
+            var sun
+            =confirm('오늘은 일요일입니까?');
+            console.log(sun);
+            if(sun==true){
+                console.log('O');
+            }else{
+                console.log('X');
+            }
+        }
+    </script>
+
+    <h2>도큐먼트 라이트</h2>
+    <button type="button" onclick="change();">바껴라~!~!~!~!~!</button>
+    <script>
+        function change(){
+            // document.write('<h1>황정현</h1>');
+            document.write('lipsum');
+        }
+    </script>
+
+    <h1>도큐먼트 연습</h1>
+    <button type="button" onclick="atitle();"> 제목출력 </button>
+    <script>
+        function atitle(){
+            document.write('<h1>제목은 역시 h1 </h1>');    
+        }
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>
