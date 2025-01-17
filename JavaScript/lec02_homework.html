@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        div{
+            width:400px;
+            height:250px;
+            background-color: blanchedalmond;
+            display: flex;
+        }
+    </style>
+
+    <label for="user">구매자 : </label>
+    <input type="text" placeholder="구매자 이름을 입력하세요" id="user"> <br>
+    <label for="product">상품명 : </label>
+    <input type="text" placeholder="구매 상품명을 입력하세요" id="product"><br>
+    <label for="price">가격 : </label>
+    <input type="text" placeholder="구매 가격을 입력하세요" name="price" id="price"><br>
+    <button type="button" onclick="user1();">입력값 출력하기</button>
+
+<div id="box1">
+    구매자:
+</div>   
+<div id="box">
+    상품명:    
+</div>
+<div id="box3">
+    가격:
+</div>
+    <script>
+        function user1(){  
+            var x =document.getElementById('product').value;
+            document.getElementById('box').innerHTML+=document.getElementById('product').value;
+            var y = document.getElementsByName('price').value;
+            document.getElementsByName('box3').innerHTML+=document.getElementsByName(y[0]).value;
+        }
+    </script>
+</body>
+</html>

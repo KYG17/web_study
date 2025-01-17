@@ -111,7 +111,7 @@
             alert(userName);
         }
         document.getElementById('setNameBtn').onclick = function(){
-            document.getElementById('userName').value += '황정현';
+            document.getElementById('userName').value = '황정현';
         }
     </script>
 
@@ -197,17 +197,22 @@
     <input type="button" value="바꿔주기" onclick="setTag();">
     <script>
         function setTag(){
-            document.getElementById('test1').innerHTML='<h1>정현아 너 고수냐?</h1>';
+            document.getElementById('test1').innerText='<h1>ohhhhh</h1>'
+            // document.getElementById('test1').innerHTML='<h1>정현아 너 고수냐?</h1>';
         }
 
 
 
 
         function getTag(){
-            var test1 = document.getElementById('test1').innerHTML
-            var test2 = document.getElementById('test2').innerHTML
-            console.log(test1);
-            console.log(test2);
+            var t3 = document.getElementById('test1').innerText;
+            var t4 = document.getElementById('test2').innerText;
+            console.log(t3);
+            console.log(t4);
+            // var test1 = document.getElementById('test1').innerHTML
+            // var test2 = document.getElementById('test2').innerHTML
+            // console.log(test1);
+            // console.log(test2);
         }
     </script>
 
