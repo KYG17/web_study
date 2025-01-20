@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제어문 : 조건문 , 반복문문</title>
+</head>
+<body>
+    <h1>If문</h1>
+    <input type="number" id="ifNum" >
+    <input type="button" value="양수vs음수" onclick="checkNum();"> <Br>
+
+    <script>
+        function checkNum(){
+            let num = Number(document.getElementById('ifNum').value);
+            //input type 'number'는 string이니깐 문자 > 숫자로 바꿔주기
+            if(num > 0){
+                alert('양수입니다');
+            }else if(num < 0){
+                alert('음수입니다');
+            }else{
+                alert('0입니당!');
+            }
+        }
+    </script>
+    <h1>연습문제</h1>
+    <label for="userId">아이디</label>
+    <input type="text" id="userId">
+    <label for='userPw'>비밀번호</label>
+    <input type="password" id="userPw">
+    <input type="button" value="로그인" onclick="clickId();"> 
+
+    <script>
+        function clickId(){
+            let a = document.getElementById('userId').value;
+            let b = document.getElementById('userPw').value;
+            if(a=='admin' && b=='admin1234'){
+                alert('로그인 완료!')
+            }else{
+                alert('아이디 혹은 비밀번호가 땡!')
+            }
+        //     if(a == 'admin'){
+        //         if(b=='admin1234'){
+        //             alert('로그인 되었습니다');
+        //         }else{
+        //             alert('비밀번호가 일치하지 않습니다');
+        //         }
+        //     }else{
+        //         alert('누구시죠?');
+        //     }
+        }
+    </script>
+
+    <h1>Switch문</h1>
+    <input type="button" value="switch확인" onclick="switchTest();"> <br>
+    <script>
+        function switchTest(){
+            let num = Number(document.querySelector('#ifNum').value);
+            switch(num){
+                case 1 : alert('1이네요'); break;
+                case 2 : alert('2이네요'); break;
+                default : alert('1도 2도 아니네요?');
+            }
+        }
+    </script>
+    <h1>연습문제</h1>
+    <select onchange="alarm1();" id="menu">
+        <option value="0">메뉴선택</option>
+        <option value="1">돼지두루치기</option>
+        <option value="2">마라샹궈</option>
+        <option value="3">김치찌개</option>
+    </select>
+    <script>
+        function alarm1(){
+            let b = Number(document.getElementById('menu').value);
+            switch(b){
+                case 1 : alert('돼지두루치기는 1000원 입니다'); break;
+                case 2 : alert('마라샹궈는 2000원 입니다'); break;
+                case 3 : alert('김치찌개는 3000원 입니다'); break;
+                default : alert('메뉴를 선택하세요!!'); break;
+            }
+        }
+    </script>
+
+    <h1>for문</h1>
+    <input type="button" value="반복하기" onclick="loopFunc();">
+    <div id="resultDiv"></div>     
+    <script>
+        function loopFunc(){
+            document.getElementById('resultDiv').innerHTML='';
+            for(let i = 0 ; i < 10 ; i++){
+                document.getElementById('resultDiv').innerHTML+='<h6>안녕하세요</h6>';
+            }
+        }
+    </script>
+
+    <H1>중첩 반복문</H1>
+    <button onclick="enterClass();">교실 입장</button>
+    <p>총 2개의 교실, 하나의 교실에 3명의 학생 입장</p>
+    <script>
+        function enterClass(){
+            for(let i = 0 ; i < 2 ; i++){
+                // console.log('교실' +(i+1)+'번 입장');
+                console.log(`교실 ${i+1}번 입장`)
+                for(let j =0 ; j<3 ;j++){
+                    console.log(`학생${j+1+(3*i)}`)
+                }
+                console.log(`교실 ${i+1}번 퇴장`)
+            }
+        }
+    </script>
+
+    <H1>연습 문제</H1>
+    <input type="button" value="배경추가" onclick="changeBack();">
+    <script>
+        function changeBack(){
+            let a1 = document.getElementsByTagName('h1');
+            console.log(a1);
+        for(let i = 0 ; i < a1.length ; i++){
+            if(i%2==0){
+                a1[i].style.backgroundColor='lightpink';
+            }else{
+                a1[i].style.backgroundColor='lightblue';
+            }
+        
+        }
+    }
+    </script>
+
+    <h1>break문</h1>
+    <input type="button" value="break동작" onclick=" breakTest();">
+    <script>
+        function breakTest(){
+            //외부 반복문 : 1,2,3
+            //내부 반복문 : 1,2
+            for(let i=1 ; i<=3 ; i++){ //break문 없으면 abbc abbc abbc
+                console.log('A');
+                for(let j = 1 ; j <=2 ;j++){
+                    console.log('B');
+                    //1. 내부 반복문에 break문; -> abc abc abc로 나옴옴
+                    // break; 
+                }
+                console.log('C');
+                //2. 외부 반복문에 break문 -> 한번만 반복하고 끝
+                // break; 
+            }
+        }
+    </script>
+    <h1>break문 연습문제</h1>
+    <label for="num1">생산 개수:</label>
+    <input type="number" id="num1">
+    <input type="button" value="생산" onclick="breakPra();">
+    <div id="factory">
+
+    </div>
+
+    <script>
+        function breakPra(){
+            let a = document.getElementById('num1').value;
+            document.getElementById('factory').innerHTML='';
+            for(let i = 0 ; i < a ; i++) { 
+                document.getElementById('factory').innerHTML+= '<img src="../resources/shaving.png">';
+                for(let j = 0 ; j<2 ; j++){
+                    document.getElementById('factory').innerHTML+= '<img src="../resources/knife.png">';
+                }
+                document.getElementById('factory').innerHTML+='<br>';
+        }
+    }
+    </script>
+
+    <h1>While문</h1>
+    <input type="button" value="while동작" onclick="whilefunc();">
+    <script>
+        function whilefunc(){
+            let b = 10;
+            // while(b >= 5){
+            //     console.log(b);
+            //     b--;
+            // }
+            while(true){
+                b--;
+                if(b == 5){
+                break;
+            }
+            }
+        }
+    </script>
+    <script>
+        let wCnt = 10;
+        do{
+            console.log(wCnt);
+            wCnt--;
+        }while(0 < wCnt && wCnt <10);
+    </script>
+
+    <h1>10보다 작은 숫자</h1>
+    
+    <input type="number" id="bigger">
+    <input type="button" value="출력하기" onclick="getBig();">
+    <div id="box"></div>
+    <script>
+        function getBig(){
+            let a = document.getElementById('bigger').value;
+            do{    
+                document.getElementById('box').innerHTML += a+'<br>';
+                a++;
+            }while(a <=10);   
+        }    
+    </script>
+
+
+<h1 onclick="conTest();">Continue</h1>
+<script>
+    function conTest(){
+        for(let i = 1 ; i <= 10 ; i++){
+            if(i % 2 == 0){
+                continue;
+            }
+            console.log(i+"출력");
+        }
+    }
+</script>
+
+
+    
+        
+    
+</body>
+</html>

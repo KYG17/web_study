@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #cirlce{
+            width:100px;
+            height:100px;
+            border-radius: 150px;
+            background-color: hotpink;
+        }
+
+    </style>
+
+    <h2>홀수? 짝수?</h2> <br>
+    <input type="button" value="구슬 추가" id="add1" onclick="addCircle();">
+    <input type="button" value="홀짝" id="even">
+    <input type="button" value="구슬 추가" id="reset">
+    <div id="cirlce">
+
+    </div>
+    <script>
+        function addCircle(){
+            let x = document.getElementById('circle').value;
+            document.getElementById('circle').innerText += 'x';
+        }
+    </script>
+</body>
+</html>

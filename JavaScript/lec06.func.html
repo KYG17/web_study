@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+</head>
+<body>
+    <h1 id="red" onclick="changeRed();">빨강색</h1> 
+    <h1 id="orange" onclick="changeColor('orange')">주황색</h1>
+    <h1 id="gold" onclick="changeEle(this);">노랑색</h1>
+    <script>
+        function changeRed(){   
+            document.getElementById('red').style.color='red';
+        }
+        function changeColor(colorCode){
+            document.getElementById(colorCode).style.color=colorCode;
+        }
+        function changeEle(ele){
+            ele.style.color = ele.id;
+        }
+    </script>
+
+    <h1>매개변수</h1>
+    <input type="button" value="기본" onclick="printFruit('수박',350000);">
+    <br>
+    <input type="button" value="순서 뒤집기"
+    onclick="printFruit(350000,'참외');">
+    <br>
+    <input type="button" value="작은" onclick="printFruit('참외');">
+    <br>
+    <input type="button" value="많은" onclick="printFruit('수박',19999,'초특가');">
+    <script>
+        function printFruit(name='수박' , price=300000){
+            console.log(`과일 이름: ${name}`);
+            console.log(`과일 가격: ${price}`);   
+            // if(typeof(name)== 'string' && typeof(price) == 'number'){
+            //     console.log(`과일 이름: ${name}`);
+            //     console.log(`과일 가격: ${price}`);   
+            // }else{
+            //     console.log('매개변수의 순서,개수,자료형을 지키세요!');
+            // }
+        }
+    </script>
+
+    <h1>키오스크</h1>
+    <label for="bePrice">할인 전:</label>
+    <input type="text" value="9400" readonly id="bePrice"> <br>
+    <input type="radio" value="기본할인(5%)" id="general" onchange="calcPrice();"> 
+    <label for="general">기본할인(5%)</label> <br>
+    <input type="radio" id="tongsinsa" >
+    <label for="tongsinsa">통신사(10%)</label> <br>
+    <label for="total">결제액 : </label>
+    <input type="text" id="total">
+
+    
+
+    <script>
+        function calcPrice(percent = 5){
+            //1. 할인 전 가격 가져오기
+            let a = document.getElementById('bePrice').value;
+            console.log(a);
+            //2. 매개변수 percent를 기준으로 결제액 계산하기
+            let a1 = a *(1-percent/100);
+            console.log(a1);
+            //3. input의 값을 결제액으로 바꾸기
+            document.getElementById('total').value=a1;
+        }
+    </script>
+
+
+</body>
+</html>

@@ -16,8 +16,40 @@
         }
     </script>
 
-    
+    <H2>크기 조정</H2>
+    <label for="num1">가로 :</label>
+    <input type="number" id="num1"> <br>
+    <label for="nume2">세로 : </label>
+    <input type="number" id="num2"> 
+    <input type="button" value="변경" onclick="growDung();"> <br> 
+    <img src="../resources/dung.png" width="100px"; height="100px"; id="dung">
+    <script>
+        function growDung(){
+            let x = document.getElementById('num1').value;
+            console.log(x);
+            let x1 = document.getElementById('num2').value;
+            console.log(x1);
+            document.getElementById('dung').width = x;
+            document.getElementById('dung').height = x1;   
+        }
+    </script>
+    <style>
+        #cirlce{
+            width:px;
+            height:100px;
+            border-radius: 150px;
+            background-color: hotpink;
+        }
 
+    </style>
+
+    <h2>홀수? 짝수?</h2> <br>
+    <input type="button" value="구슬 추가" id="add1">
+    <input type="button" value="홀짝" id="even">
+    <input type="button" value="구슬 추가" id="reset">
+    <div id="cirlce">
+
+    </div>
     
 </body>
 </html>
