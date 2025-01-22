@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+</head>
+<body>
+    <h1>객체 생성</h1>
+    <button onclick="makeObj1();">리터럴 방식</button>
+    <script>
+        let makeObj1 = function(){
+            // let person = {}; //person을 객체로 쓰겠다
+            // person['name'] = '황정현';
+            // person['age'] = 27;
+            // console.log(person);
+
+            let student = {
+                name : '권용규',
+                age : 30,
+                hobby : ['독서','영화'],
+                toString : function(){
+                    return this.name + '는' + this.age+'입니다.';
+                },
+                item : {
+                    name: '샤프',
+                    price: 200000
+                }
+                
+            };
+            console.log(student);
+        }
+    </script>
+
+    <button onclick="createObj();">생성자(new)</button>
+    <script>
+        let createObj = function(){
+            let member = new Object();
+            member['phone'] = '0101112222';
+            member['type'] = 'iphone'
+            console.log(member);
+        }
+    </script>
+
+    <button onclick="testObj();"> 생성자 함수</button><br>
+    <script>
+        let testObj = () =>{
+            let student = Student('이영희',1);
+            console.log(student);
+        }
+
+        let Student = function(name1,grade2){
+            return {
+                '이름' : name1,
+                '학년' : grade2
+            };
+        }
+    </script>
+    <h1>자동차 만들기</h1>
+    <label for="name">브랜드:</label>
+    <input type="text" id="name"><br>
+    <label for="model">모델명:</label>
+    <input type="text" id="model"><br>
+    <iabel for="year">제조 연도:</iabel>
+    <input type="text" id="year"><br>
+    <button onclick="carObj1();">만들기</button>
+
+    <script>
+        let carObj1 = function(){
+            let a = document.getElementById('name').value;
+            let b = document.getElementById('model').value;
+            let c = document.getElementById('year').value;
+
+            let carObj = Car(a,b,c);
+            console.log(carObj);
+        }
+
+        let Car = function(name,model,year){
+            return{
+                '브랜드' : name,
+                '모델명' : model,
+                '제조연도' : year
+            }
+        }
+    </script>
+
+    <h1>객체 속성 추가 및 삭제</h1>
+    <button onclick="addProp();">추가</button>
+    <button onclick="removeProp();">삭제</button>
+    <script>
+        let sampleObj = {};
+        let addProp = () => {
+            sampleObj['f'+'u'+'n'] = function(){
+                console.log('확인');
+            }
+            sampleObj.num = 100;
+            console.log(sampleObj);
+            // sampleObj['f'+'u'+'n']();
+        }
+        let removeProp = () => {
+            delete(sampleObj['num']);
+            delete(sampleObj.fun);
+            console.log(sampleObj);
+
+        }
+    </script>
+    <h1>객체 호출</h1>
+    <button onclick="makePerson();">생성</button> <br>
+    <script>
+        let makePerson= function(){
+            let p = setPerson('수철',true,['수영','골프']
+                                ,{name :'만년필',price:100});
+            //1. 리터럴 : number, string, boolean
+            let val1 = p.name; // ->name 호출
+            let val2 = p['name']; // -> [] 사용
+
+            let word = 'Student';
+            let val3 = p['is' + word]; //isStudent
+            console.log(val3);
+
+
+            console.log(val1,val2,val3);
+
+            //2 . 배열
+            let arr = p['hobby'];
+            let arr2 = p.hobby;
+            console.log(arr);
+
+            let val4 = p['hobby'][0];
+            val4 = p.hobby[1];
+            val4 = arr[0];
+
+            let str = p.hobby.join('+');
+
+            p['hobby'].forEach(function(ele){
+                console.log(`${ele} 접근`);
+            })
+
+            //3. 객체 (=item)
+            let val5=p['item']['name'];
+                val5 = p['item'].name;
+            let val6 = p.item['price'];
+                val6 =p.item.price;
+            console.log(val5,val6);
+
+            //4. 함수
+            console.log(p.callName());
+            console.log(p['callName']());
+
+            p.testFunc();
+
+            for(key in p){
+                console.log(key);
+                let valu = p[key];
+                console.log(valu);
+            }
+
+        }
+        let setPerson = function(name,bool,arr,item){
+            let obj = {
+                name : name,
+                isStudent : bool,
+                hobby : arr,
+                item : item,
+                callName : function(){
+                    return '나의 이름은' + this.name;
+                },
+                testFunc : function(){
+                    if(this.isStudent){
+                        console.log(`학생 ${this.name}`);
+                    }else{
+                        console.log(`${this.name}님`);
+                    }
+                }
+            };
+            return obj;
+        }
+    </script>
+
+    <h1>문제</h1>
+    <fieldset>
+        <legend>출력</legend>
+        <label for="menu">메뉴명</label>
+        <input type="text" id="menu"> <br>
+        <label for="price">가격</label>
+        <input type="text" id="price">
+    </fieldset>
+    <button onclick="insertBread();">입력</button>
+    <button onclick="printBread();">출력</button>
+
+    <script>
+        //bread 객체 생성
+        let bread = new Object();
+        let insertBread = function(){
+            //프롬프트로 메뉴명
+            let b = prompt('메뉴를 입력해주세요');
+            let c = prompt('가격을 입력해주세요')
+            // 객체에 속성 추가
+            bread.menu=b;
+            bread.price=c;
+            console.log(bread); 
+        }
+
+        let printBread = function(){
+           // 입력받지 않은 상태에서 출력 버튼을 클릭할 경우 정보가 
+           // 입력되지 않았다는 알림을 띄워주세요.
+            if(bread.menu==''){
+                alert('메뉴이름이 입력되지 않았습니다')
+            }else if(bread.price==''){
+                alert("가격이 입력되지 않았습니다")
+            }else{
+                alert('둘 다 x')
+            }
+
+            //객체에 들어있는 정보를 input에 출력
+            document.getElementById('menu').value="";
+            document.getElementById('price').value="";
+            document.getElementById('menu').value+=bread.menu;
+            document.getElementById('price').value+=bread.price;
+        }
+
+    </script>
+
+    <button onclick="thisFunc();">this테스트</button>
+    <script>
+        const thisFunc = function(){
+            account('철수').printName();
+        }
+        const account = function(name){
+            return {name : name,
+                    printName : ()=>{
+                    console.log(this);
+            }}
+        }
+    </script>
+    <button onclick="showThis(this);">화살표 this</button>
+        <script>
+            let showThis = (element) =>{
+                console.log(element);
+            }
+        </script>
+
+        <h1>객체 배열</h1>
+        <script>
+            let customers = [  //배열 생성 [ 그리고 객체 생성 {}]
+                {
+                    name : '정현',
+                    age : 24
+                }
+            ]; 
+            // console.log(customer[0]['name']);
+            console.log(customers[0].name);
+            //배열안에 있는 객체 안에 요소 추가 , key 값도 추가 가능능
+            customers.push({name:'철수',gender:'M'});
+            customers.unshift({name:'길동',age:51});
+            console.log(customers);
+
+            customers.pop();
+            customers.shift();
+            console.log(customers);
+        
+        </script>
+</body>
+</html>

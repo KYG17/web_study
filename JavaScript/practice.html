@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>화살표 함수</h1>
+<button onclick="arow3();">화살표 함수</button>
+<script>
+    const arow3 = (str,s) => str.indexOf(s);
+</script>
+
+
+<div id="result">
+    안녕하세요
+</div>
+<script>
+    (function(){
+        document.getElementById('result').innerHTML = '<h1>할수있어정현</h1>'
+    })();
+</script>
+
+<h1>join</h1>
+<button onclick="arrToStr();">
+    배열 -> 문자열
+</button>
+<script>
+    function arrToStr(){
+        let foods = ['떡볶이','튀김','순대'];
+        let result = foods.join('+');
+        console.log(result+"=짱맛");
+    }
+</script>
+
+<h1>forEach()</h1>
+<button onclick="practiceForEach();">연습</button>
+<script>
+    let practiceForEach = function(){
+        let nums = [5,6,7,8];
+
+        for(let i = 0 ; i < nums.length ; i++){
+            console.log(i+":"+ nums[i]);
+        }
+        
+        };
+    
+</script>
+
+<input type="button" value="내 이름은?" onclick="alert(a());">
+<script>
+    let a = function(name = '황정현'){
+        return name + "입니다";
+    }
+</script>
+</body>
+</html>

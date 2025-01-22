@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열</title>
+</head>
+<body>
+    <h1>선언</h1>
+    <button onclick="createArray();">결과확인</button>
+    <script>
+        const createArray = function(){
+            //리터럴
+            let arr1 =[];
+            let arr2 =['해','달',"별"];
+            console.log(arr1);
+            console.log(arr2);
+            console.log(Array.isArray(arr2)); //배열 타입 확인 
+
+            //생성자
+            let arr3 = new Array();
+            let arr4 = new Array(4);
+            let arr5 = new Array('해','달','별');
+        }
+    </script>
+
+    <h1>값 대입</h1>
+    <button onclick="setVal();">대입 연습</button>
+    <button onclick="getVal();">호출</button>
+    <script>
+        let globalArr = new Array();
+        let setVal = function(){
+            globalArr[0] = 100;
+            globalArr[1] = '황정현';
+            globalArr[2] = true;
+            globalArr[3] = function(){
+                alert('배열 안!');
+            }; //모든 것을 다 넣을 수 있음
+
+            // globalArr[5] = 'test';
+            // for(let i = 0 ; i < 5 ; i++){
+            //     globalArr[i] = i*2;
+            // }
+        }
+        let getVal = function(){
+            globalArr[3](); //function 함수 값 나오게 하는 법!
+            //console.log(globalArr[3]);
+        //     for(let i = 0 ; i < globalArr.length ; i++){
+        //         console.log(globalArr[i]);
+        //     }
+        }
+    </script>
+
+    <h1>split</h1>
+    <span>tom,json,maria,my</span>
+    <button onclick="changeStrToArr();">2번째 데이터 가져오기</button> <br>
+    <script>
+        let changeStrToArr = function(){
+            let str = document.getElementsByTagName('span')[0].innerText;
+            console.log(str); // => span데이터 가져오기
+            let arr = str.split(','); // => span의 데이터를 split을 활용하여 배열 만들기
+            console.log(arr);
+            // for(let i = 0 ; i < arr.length ; i++){
+            //     console.log(arr[i]);
+            // }
+            // console.log(arr[1]);
+
+            if(arr.includes('json')){ // => json 이 있으면면
+                let idx = arr.indexOf('json') // json의 인덱스를 찾아주세요 , json의 인덱스는 1번 let idx에 들어가는 값은 [1]
+                console.log(arr[idx]); // => 이거는 곧 console.log(arr[1]) => json이 나옴
+            }
+
+
+
+            if(arr.includes('java')){
+                console.log('Hello World')
+            }
+            if(arr.indexOf('java') != -1) {
+                console.log('java는 없어요!');
+            }
+        }
+    </script>
+<h1>split 연습문제</h1>
+<label id="la1">사과,바나나,당근</label>
+<button onclick="a();">버튼입니다</button>
+<script>
+    let a = function(){
+        let str = document.getElementById('la1').innerText;
+        //la1 번의 정보 가져오기
+        console.log(str);
+        //가져온것을 배열로 만들기
+        let arr = str.split(',');
+        console.log(arr);
+        //사과의 인덱스 찾기
+        let idx = arr.indexOf('사과');
+        console.log(idx);
+        //결과
+        //alert(`사과의 인덱스 : ${arr.indexOf('사과')}`)
+        alert("사과의 인덱스 : " + idx);
+    }
+</script>
+<h1>배열 합치기</h1>
+<button onclick="concatArr();">+++Concat+++</button>
+<script>
+    let concatArr = function(){
+        let student1 = ['tom','maria'];
+        let student2 = ['amy','john'];
+        //새로운 변수로 할당
+        let result = student1.concat(student1,student2);
+        console.log(result);
+    }
+</script>
+
+<h1>배열 합치기 연습</h1>
+<label id="la1">사과,바나나,당근</label>
+<label id="la2">김밥, 치즈, 떡볶이, 햄버거</label> <br>
+<button onclick="plus();">치즈의 인덱스는?!</button>
+<script>
+    let plus = function(){
+        // 라벨 정보 가져오기
+        let arr = document.getElementById('la1').innerText;
+        let arr1 = document.getElementById('la2').innerText;
+        //split으로 배열 만들기
+        let str = arr.split(',');
+        let str1 = arr1.split(',');
+        //concat으로 배열 연결해주기
+        let result = str.concat(str1);
+        console.log(result);
+        //치즈의 인덱스 찾아주기
+        let idx = result.indexOf(' 치즈');
+        console.log(idx);
+        //콘솔창에 출력
+        console.log("치즈의 인덱스는 : " + idx + " 입니다 ");
+    }
+</script>
+<h1>배열 -> 문자열</h1>
+<button onclick="arrToStr();">연습</button>
+<script>
+    let arrToStr = function(){
+        let food = ['떡볶이','튀김','순대']
+        console.log(food);
+        let result = food.join('+');
+        console.log(result);
+    }
+</script>
+
+<h1>배열 뒤집기</h1>
+<button onclick="otherWay();">반대로</button>
+<script>
+    let otherWay = function(){
+        let alpha = ['a','b','e','c'];
+        alpha.reverse();
+        console.log(alpha);
+    }
+</script>
+
+<h1 onclick="dataChange();">push,pop</h1>
+<script>
+    let dataChange = function(){
+        let names = ['철수','영희']
+        // names.push('졍헌이');
+        names.unshift('지은이');
+        console.log(names);
+        // names.pop();
+        names.shift();
+        console.log(names);
+    }
+</script>
+
+<h1>기록하기</h1>
+<input type="text" id="history">
+<input type="button" value="입력" onclick="addMemo();">
+<input type="button" value="출력" onclick="showMemo();">
+
+<ul id="list1">
+</ul>
+
+<script>
+    let memoArr = new Array();
+    let addMemo = function(){
+        // input에 입력한 문자 정보 받아오기
+        let a = document.getElementById('history').value;
+        // memoArr 배열에 요소로 추가하기
+        memoArr.push(a);
+        // 확인하기
+        console.log(memoArr);
+    }
+    let showMemo = function(){
+        // document.getElementById('list1').innerHTML+= '<br>';
+        // memoArr 배열에 기록된 모든 정보를 순서가 없는 목록 형태로 출력
+        // console.log(memoArr); =>확인하기기
+        // document.getElementById('list1').innerHTML += '<li>' +memoArr +'<li>';
+            for(let i = 0 ; i < memoArr.length;i++){
+            document.getElementById('list1').innerHTML +='<li>' +memoArr[i]+'</li>'; // ?!?!?!?!?!??!
+            }
+        }
+</script>
+
+<h1>향상된 for문</h1>
+<button onclick="testFor();">연습</button>
+<script>
+    const testFor = function(){
+        let nums = [5,6,7,8];
+        nums.forEach(function(element,index){
+            console.log(`(1) ${index}는 ${element}`);
+        });
+        nums.forEach((ele,idx)=>{
+            console.log(`(2) ${idx}는 ${ele}`);
+        });
+        nums.forEach((val =>{
+            console.log(val);
+        }))
+    }
+</script>
+
+<h1>배열 정렬</h1>
+<button onclick="ascendArr();">오름차순</button>
+<button onclick="descendArr();">내림차순</button>
+<ol id="sort_ol">
+</ol>
+<script>
+    let numArr = [3,5,1,8,9,10];
+    let ascendArr = function(){
+        // numArr.sort();
+
+        //향상된 for문을 활용해 numArr 배열 확인
+        //로직으로 오름차순 정렬렬
+        // numArr.sort(function(x,y){
+            //     if(x < y) return -1;
+            //     else if(x > y) return 1;
+            //     else return 0;
+            // });
+            numArr.sort((left,right)=>{
+                return left-right;
+            })
+            for(let num of numArr){
+                console.log(num);
+            }
+            document.getElementById('sort_ol').innerHTML='';
+            numArr.forEach(function(ele){
+                document.getElementById('sort_ol').innerHTML+=`<li>${ele}</li>`
+            });
+    }
+    let descendArr = function(){
+        
+        // numArr.sort(function(x,y){
+        //     if(x < y) return 1;
+        //     else if(x > y) return -1;
+        //     else return 0;
+        // });
+        numArr.sort((left,right)=>{
+            return right-left;
+        })
+        document.getElementById('sort_ol').innerHTML='';
+        numArr.forEach(function(ele){
+                document.getElementById('sort_ol').innerHTML+=`<li>${ele}</li>`
+            });
+    }
+</script>
+<h1>오름차순 내림차순 문제</h1>
+<label id="project">전홍식,강성관,조윤아</label>
+<button onclick="up();">오름차순</button>
+<button onclick="down();">내림차순</button>
+<ul id="list2"></ul>
+<script>
+    let up = function(){
+        //라벨 정보 가져오기
+        let arre  = document.getElementById('project').innerText;
+        //split으로 배열 만들기기
+        let arre1 = arre.split(',');
+        //확인하기
+        console.log(arre1);
+
+        // 오름차순으로 만들기
+        arre1.sort();
+        document.getElementById('list2').innerHTML='';
+        arre1.forEach(function(ele){
+                document.getElementById('list2').innerHTML+=`<li>${ele}</li>`
+            });
+    }
+
+    let down = function(){
+        let arre  = document.getElementById('project').innerText;
+        //split으로 배열 만들기기
+        let arre1 = arre.split(',');
+        //확인하기
+        console.log(arre1);
+
+        arre1.sort(function(x,y) {
+            if(x < y) return 1;
+            else if (x > y) return -1;
+            else return 0;
+        });
+        document.getElementById('list2').innerHTML='';
+        arre1.forEach(function(ele){
+                document.getElementById('list2').innerHTML+=`<li>${ele}</li>`
+            });
+    }
+</script>
+
+
+</body>
+</html>
