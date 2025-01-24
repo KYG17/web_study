@@ -27,7 +27,7 @@
         }
     </script>
 
-    <h1>댓글 입력창</h1>
+    <h1 id="target">댓글 입력창</h1>
     <textarea id="comment" maxlength="100" onkeyup="getLength(this);"></textarea>
     <span id="count">0</span>
     <span>/100</span>
@@ -147,7 +147,7 @@
 </script>
 
 <h1>Math</h1>
-<button onclick="changeNum();">3.72의 변신</button>
+<button onclick="changeNum();">3.72의 변신</button> <br><br><br><br>
 <script>
     let changeNum = function(){
         let num = 3.72;
@@ -157,11 +157,12 @@
         console.log(Math.abs(num)); //3.72
         console.log(Math.pow(num,2)); //13.8384~
         
+        //let result = Math.round(num * Math.pow(10,1)) / Math.pow(10,1);
         let result = Math.round(num * 10)/10;
         console.log(result);
 
-        Math.round(num*Math.pow(10,3)) / Math.pow(10,3);
-
+        let b = Math.round(num*Math.pow(10,3)) / Math.pow(10,3);
+        console.log(b);
         // 최소 : 1 ~ 최대: 5
         let rnd = Math.random();
             rnd = rnd * 5;
@@ -169,8 +170,22 @@
             rnd = rnd + 1;
             console.log(rnd);
         // 한번에 계산
-        Math.floor(ranadom()*(5-1+1))+1
+        // let a = Math.floor(Math.random()*(5-1+1))+1
 
+    }
+</script>
+
+<button onclick="scrollTest();">스크롤 이동</button>
+<script>
+    const scrollTest = function(){
+        // scrollTo(0,10);
+
+        //찾고자 하는 곳으로 스크롤 이동 y축!
+        let point = document.getElementById('target').offsetTop;
+        // scrollTo(0,point);
+
+        //key : value behavior : smooth -> 부드럽게~
+        scrollTo({left : 0, top:point,behavior:'smooth'});
     }
 </script>
 

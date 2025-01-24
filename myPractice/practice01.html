@@ -200,5 +200,13 @@ customers.push({name:'gildong',age:51,gender:'M'})
     }
 </script>
 
+<button onclick="lottery();">로또</button>
+<script>
+    let lottery = function(){
+        let rnd = Math.floor(Math.random()*(5-1+1))+1;
+        console.log(rnd);
+    }
+</script>
+
 </body>
 </html>

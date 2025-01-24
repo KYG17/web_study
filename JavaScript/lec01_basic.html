@@ -68,7 +68,21 @@
     <button type="button" onclick="date();">오늘 날짜</button>
     <script>
         function date(){
-            alert('2025년 01월 16일 화요일');
+            //alert('2025년 01월 16일 화요일');
+            let today = new Date();
+            //1.변수에 하나씩 세팅
+            let year = today.getFullYear();
+            let month = today.getMonth()+1; // 1월은 : 0
+            let date = today.getDate();
+            let day = today.getDay();
+            switch(day){
+                case 0 : day = '일'; break;
+                case 1 : day = '월'; break;
+                case 2 : day = '화'; break;
+                case 3 : day = '수'; break;
+                case 4 : day = '목'; break;
+            }
+            alert(`${year}년 ${month}월 ${date}일 ${day}요일`)
         }
     </script>
 

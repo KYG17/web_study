@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend>강아지 정보</legend>
+        <label for="name">이름</label>
+        <input type="text" id="name"><br>
+        <label for="age">나이</label>
+        <input type="text" id="age"><br>
+        <label for="habit">특징</label>
+        <input type="text" id="habit">
+    </fieldset>
+    <button onclick="regi();">등록</button>
+    <button onclick="confirm();">확인</button>
+    <div id="listT"></div>
+    <script>
+        
+        let friendArr = [];
+        let regi = function(){
+            let a = document.getElementById('name').value;
+            let b = document.getElementById('age').value;
+            let c = document.getElementById('habit').value;
+            
+            friendArr.push(setFriend(a,b,c));
+            console.log(friendArr);
+        } 
+        let confirm = function(){
+            document.getElementById('listT').innerHTML = '';
+            friendArr.forEach(function(ele){
+                document.getElementById('listT').innerHTML += `<BR> 이름 : ${ele.name}, 나이 : ${ele.age} , 성격 : ${ele.personality} `
+            })
+        }
+        let setFriend = function(name,age,personality){
+            let friend = {
+                name : name,
+                age : age,
+                personality : personality
+            };
+            return friend;
+        };
+    </script>
+</body>
+</html>

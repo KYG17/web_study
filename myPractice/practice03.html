@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout,setInterval</title>
+</head>
+<body>
+    <h1>setTimeout</h1>
+    <button onclick="timeStart();">2초뒤에 나올거에요</button>
+    <button>멈춰!</button>
+    <div id="div_result">
+
+    </div>
+    <script>
+        let timeStart = function(){
+            setTimeout(function(){
+                document.getElementById('div_result').innerHTML += '<h1>멈춰!</h1>'
+            },2000);
+        }
+    </script>
+
+    <h1>setInterval</h1>
+    <button onclick="down();">셋인터벌이야!</button>
+    <button onclick="stop();">멈춰!</button>
+    <div id="div_result2">
+
+    </div>
+
+    <script>
+        let inter;
+        let down = function(){
+            let num = 100
+        inter = setInterval(function(){
+                document.getElementById('div_result2').innerHTML += num-- + '<br>'    
+            },1000);
+        }
+
+        let stop = function(){
+            clearInterval(inter);
+        }
+    </script>
+
+    <h1>문제를 풀거에요!</h1>
+    <div style="background-color: lightgreen;">
+    <span id="letsGo">60</span><span>초</span>
+    <p>다음 중 프론트엔드 개발자가 다루는 언어가 아닌 것은?</p>
+    <select id="answer">
+        <option value="0">선택하기</option>
+        <option value="1">CSS</option>
+        <option value="2">HTML</option>
+        <option value="3">JavaScript</option>
+        <option value="4">Java</option>
+    </select>
+    <p>1.CSS</p>
+    <p>2.HTML</p>
+    <p>3.JavaScript</p>
+    <p>4.Java</p>
+    </div>
+    <button onclick="startTest();">시작</button>
+    <button onclick="endTest();">제출</button>
+
+    <script>
+        let startTest = function(){
+            let num = 60;
+            let strT;
+            strT = setInterval(function(){
+                document.getElementById('letsGo').innerText = --num;
+            },1000);
+        }
+
+        let endTest = function(){
+            let wind = Number(document.getElementById('answer').value);
+            let b = '오답입니다!!';
+            switch(wind){
+                case 1 : alert(b); break;
+                case 2 : alert(b); break;
+                case 3 : alert(b); break;
+                case 4 : alert("정답 딩동댕~!!"); break;
+            }
+            clearInterval(strT);
+
+        }
+    </script>
+    <div>
+    <label>로그인</label>
+    <input type="text">
+    <label>비밀번호</label>
+    <input type="text">
+    </div>
+    <input type="button" value="닫기" onclick="window.close()">
+    <h1>새창 열기 닫기</h1>
+    <button style="height:200px;  width:200px;" onclick="login();">로그인</button>
+    <script>
+        let newWindow;
+        let login = function(){
+            newWindow = open('','_blank','width=300; height=300;');
+            newWindow.document.write(   `<input type="text">
+                                        <label>로그인</label>
+                                        <input type="text">
+                                        <label>비밀번호</label>
+                                        </div>
+                                        <input type="button" value="닫기" onclick="window.close()">`)
+                                    }
+    </script>
+
+<h1 id="before_ele">before(전)</h1>
+<script>
+    window.onload = function(){
+        console.log(document.getElementById('before_ele').innerText);
+        console.log(document.getElementById('after_ele').innerText);
+    }
+</script>
+<h1 id="after_ele">after(후)</h1>
+
+
+<h1>텍스트 노드 있는 객체 생성!</h1>
+<input type="text" id="tagName" placeholder="태그입력">
+<input type="text" id="textName" placeholde="문구입력">
+<button onclick="proceedBtn();">버튼</button>
+<div id="divResult">
+
+</div>
+
+<script>
+    let proceedBtn = function(){
+        let a = document.getElementById('tagName').value;
+        let b = document.getElementById('textName').value;
+
+        let pTag = document.createElement(a);
+        let pTxt = document.createTextNode(b);
+
+        pTag.appendChild(pTxt);
+
+        document.getElementById('divResult').appendChild(pTag);
+
+    }
+</script>
+
+<h1>요소 생성(2)</h1>
+<button onclick="prdInput();">생성</button>
+<div id="createDiv">
+
+</div>
+<script>
+    let prdInput = function(){
+        //1.요소 노드
+        let inpt = document.createElement('input');
+        let brr = document.createElement('br');
+
+        //2. 요소 노드에 속성 추가
+        inpt.setAttribute('type','text');
+        inpt.setAttribute('value','user01');
+        inpt.setAttribute('id','user01');
+        
+
+        //3. div에 넣기
+        document.getElementById('createDiv').appendChild(inpt);
+        document.getElementById('createDiv').appendChild(brr);
+    }
+</script>
+
+
+</body>
+</html>
