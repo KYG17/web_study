@@ -204,24 +204,24 @@
 
     document.getElementById('search_btn').onclick = function(){
         const tar = this;
-        console.log(tar);
-        // const parent = tar.parentElement;
-        // console.log(tar,parent);
+        // console.log(tar);
+        const parent = tar.parentElement;
+        // console.log(parent);
     
-        // const children = parent.children;
+        const children = parent.children;
         // console.log(children);
-        // // 동일
-        // const arr = this.parentElement.children;
-        // console.log(arr);
-        // for(let i = 0 ; i < arr.length ; i++){
-        //     console.log(i+" : "+arr[i].tagName);
-        //     if(arr[i].tagName == 'H2'){
-        //         arr[i].style.backgroundColor = 'gold';
-        //     }else if(arr[i].tagName == 'UL'){
-        //         const li = arr[i].children;
-        //         console.log(li);
-        //     }
-        // }
+         // 동일
+        const arr = tar.parentElement.children;
+        console.log(arr);
+        for(let i = 0 ; i < arr.length ; i++){
+            console.log(i+" : "+arr[i].tagName);
+            if(arr[i].tagName == 'H2'){
+                arr[i].style.backgroundColor = 'gold';
+            }else if(arr[i].tagName == 'UL'){
+                const li = arr[i].children;
+                console.log(li);
+            }
+        }
         // //li의 첫번쨰
         // const firstLi = tar.parentElement.children[1].children[0];
         // console.log(firstLi);
