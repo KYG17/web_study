@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <button id="plus_btn">추가</button>
+    <div id="result_div">
+
+    </div>
+
+    <script>
+        $(function(){
+            $('#plus_btn').on('click',function(){
+                $('#result_div').append('<input type=”text”> <br> ');
+                let a = $('#result_div>input').length;
+                if(a > 10){
+                    alert('10개 이상은 못 사용해요!');
+                }
+            })
+        })
+    </script>
+
+    <h1>글쓰기</h1>
+    <input type="radio" value="1" id="la1" name="title">
+    <label for="la1">제목1</label> <br>
+    <input type="radio" value="2" id="la2" name="title">
+    <label for="la2">제목2</label> <br>
+    <input type="radio" value="3" id="la3" name="title">
+    <label for="la3">제목3</label> <br>
+    <input type="radio" value="4" id="la4" name="title">
+    <label for="la4">문단</label> <br>
+    <label for="textid">내용</label>
+    <input type="text" id="textid">
+    
+    <!-- <button id="btn">입력</button> -->
+
+    <div id="wri_div">
+
+    </div>
+
+    <script>
+        $(function(){
+            $('#textid').on('keydown',function(event){
+                let a = $('input[name=title]:checked').val();
+                let b = $('#textid').val();
+                console.log(b);
+                if(event.key == 'Enter'){
+                    if(a == '1'){
+                        $('#wri_div').append('<h1>'+b+'</h1>')
+                    }else if(a=='2'){
+                        $('#wri_div').append('<h2>'+b+'</h2>')
+                    }else if(a=='3'){
+                        $('#wri_div').append('<h3>'+b+'</h3>')
+                    }else if(a=='4'){
+                        $('#wri_div').append('<p>'+b+'</p>')
+                    }else{
+                        alert('타입을 선택해주세요!')
+                    }
+                
+                }
+            })
+        })
+    </script>
+
+    
+</body>
+</html>

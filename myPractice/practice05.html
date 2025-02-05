@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>html() 함수</h1>
+<div id="myDiv">
+    <a href="#">구디</a>
+</div>
+<button id="getHtml">HTML 가져오기</button>
+<button id="setHtml">HTML 변경하기</button>
+<script>
+    $(function(){
+        $('#setHtml').on('click',function(){
+            $('#myDiv').html('<h1>안녕하세요</h1>')
+        })
+    })
+</script>
+<br><br><br>
+
+<!-- <h2>자식 요소 추가</h2>
+<div id="container" style="border:2px solid green;">
+    <p>기존 자식 요소</p>
+</div>
+<button id="addLast">맨 뒤에 추가</button>
+<button id="addFirst">맨 앞에 추가</button>
+<button id="addBefore">앞에 추가</button>
+<button id="addAfter">뒤에 추가</button>
+
+<script>
+    $(function(){
+        $('#addLast').on('click',function(){
+            $('#container').append('<p>난 어펜드</p>')
+        })
+    })
+</script> -->
+
+<input type="text" id="img_text">
+<button id="img_btn">추가</button>
+<input type="radio" name="brother" id="back" value="1" checked>
+<label for="back">뒤에 추가</label>
+<input type="radio" name="brother" id="front" value="2">
+<label for="front">앞에 추가</label>
+<div id="img_div">
+    <p>기준요소</p>
+</div>
+
+<script>
+    $(function(){
+        $('#img_btn').on('click',function(){
+            let a = $('input[name=brother]:checked').val();
+            let b = $('#img_text').val();
+
+            if(a == 1){
+                $('#img_div').append('<img src='+b+'>')
+            }else{
+                $('#img_div').prepend('<img src='+b+'>')
+            }
+        })
+    })
+
+    // $(function(){
+    //     $('#img_btn').click(function(){
+    //         let a = $('#img_text').val();
+    //         $('#img_div').html('<img src='+a+'>');
+    //     })
+    // })
+</script>
+
+<h1>태그 이동</h1>
+<style>
+    #move_container{border:2px double dodgerblue;}
+    #new_container{border:2px dashed salmon;}
+</style>
+<div id="move_container">
+    <p>첫 번째 p태그</p>
+    <h4>h4 태그</h4>
+</div>
+<button onclick="moveAppend();">append 이동</button>
+<button onclick="movePrepend();">prepend 이동</button>
+<button onclick="moveBefore();">before 이동</button>
+<button onclick="moveAfter();">after 이동</button>
+<div id="new_container">
+    <h5>기준 태그</h5>
+</div>
+
+<script>
+    let moveAppend = function(){
+        $('#new_container').append($('#move_container>*:last'));
+    }
+
+    let moveAfter = function(){
+        $('#new_container').after($('#move_container>*:first'));
+    }
+</script>
+
+<h1>복제하기</h1>
+<button onclick="cloneTest();">복제</button>
+<div id="container_clone">
+    <div id="item1" class="item">
+        <span>Hello</span>
+    </div>
+</div>
+<script>
+    let num=2;
+    let cloneTest = function(){
+        let a = $('#item1').clone().attr('id','item'+num++);
+        $('#container_clone').append(a);
+    }
+</script>
+
+<h1>파일 업로드</h1>
+<button id="add_file">파일 추가</button>
+<div id="file_container">
+    <div class="file_div">
+        <input type="file" name="files">
+        <button class="remove_file">삭제</button>
+    </div>
+</div>
+
+</body>
+</html>
