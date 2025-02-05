@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>슬라이드 함수</h1>
+    <button id="slideUpTest">슬라이드업</button>
+    <button id="slideDownTest">슬라이드다운</button>
+    <button id="slideToggleTest">슬라이드 토글</button>
+    <div id="container" style="background-color: cornflowerblue;">
+        <div>첫번째 메뉴</div>
+        <div>두번째 메뉴</div>
+    </div>
+
+    <script>
+        //'fast'다음은 콜백함수 -> slideup 되고 난 후 동작할 친구
+        $(function(){
+            $('#slideUpTest').on('click',function(){
+                $('#container').slideUp('fast',function(){
+                    alert('올라갔어유~')
+                });
+            })
+
+            $('#slideDownTest').click(function(){
+                $('#container').slideDown('slow');
+            })
+            //위로 올라갔다 내려갔다
+            $('#slideToggleTest').click(function(){
+                $('#container').slideToggle(300);
+            })
+        })
+    </script>
+
+<h1>fade함수</h1>
+<button id="fadeInTest">fadeIn</button>
+<button id="fadeOutTest">fadeOut</button>
+<button id="fadeToggleTest">fadeToggle</button><br>
+<img src="../resources/dung.png" width="200" height="200">
+
+<script>
+    $(function(){
+        $('#fadeInTest').click(function(){
+            $(this).nextAll('img').fadeIn(500,function(){
+                alert('요소가 나타남')
+            });
+        })
+
+        $('#fadeOutTest').click(function(){
+            $(this).nextAll('img').fadeOut('slow',function(){
+                alert('요소가 사라짐')
+            });
+        })
+
+        $('#fadeToggleTest').click(function(){
+            $(this).nextAll('img').fadeToggle(1000);
+        })
+    })
+</script>
+
+<h1>show, hide, toggle</h1>
+<button id="showTest">show()</button>
+<button id="hideTest">hide()</button>
+<h1 id="targetH1">이제 jQuery 끝!</h1>
+
+<script>
+    $(function(){
+        $('#showTest').click(function(){
+            $('#targetH1').show(1000)
+        })
+        $('#hideTest').click(function(){
+            $('#targetH1').hide(1000);
+        })
+    })
+</script>
+
+
+
+</body>
+</html>
